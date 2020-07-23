@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades</title>
+    <script>
+
+        let paises_array = new Array("Selecciona un pais","Mexico","España","Colombia");
+        let ciudad0_array = new Array("Selecciona una ciudad");
+        let ciudad1_array = new Array("Selecciona una ciudad","D.F.","Guadalajara","Monterey");
+        let ciudad2_array = new Array("Selecciona una ciudad", "Madrid", "Valencia", "Barcelona");
+        let ciudad3_array = new Array("Selecciona una ciudad", "Bogotá", "Barranquilla", "Cali");
+
+        let ciudad_array = new Array(ciudad0_array,ciudad1_array,ciudad2_array,ciudad3_array);
+
+        let pais_cb, ciudad_cb;
+
+        window.onload = function(){
+
+            pais_cb = document.getElementById("pais");
+
+            while(pais_cb.length) pais_cb.remove(0);
+
+            for (let i=0; i<paises_array.length; i++) {
+                opcion(pais_cb, i, paises_array[i]);  
+            }
+
+            pais_cb.onchange = function () {
+
+                ciudad_cb = document.getElementById("ciudad");
+
+                while(ciudad_cb.length) ciudad_cb.remove(0);
+
+                miCiudad = pais_cb.selectedIndex;
+
+                for (let i = 0; i < ciudad_array[miCiudad].length; i++) {
+                    opcion(ciudad_cb, i, ciudad_array[miCiudad][i]);
+                }
+            }
+        }
+
+        function opcion(combo, indice,  valor) {
+            let miOpcion = new Option(valor, String(indice));
+            eval(combo.options[indice]=miOpcion);
+        }
+
+
+    </script>
+</head>
+<body>
+    <select name="pais" id="pais">
+        <option value="nada">Seleccione un país</option>
+    </select>
+    <select name="ciudad" id="ciudad">
+        <option value="nada">Selecione una ciudad</option>
+    </select>
+
+    
+</body>
+</html>
